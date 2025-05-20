@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Grievance Portal</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: monospace;
+      background: radial-gradient(circle at center, #0c1445, #000000);
+      color: white;
+    }
+    .stars {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 2s infinite ease-in-out;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+    .container {
+      z-index: 1;
+      position: relative;
+      background-color: rgba(0, 0, 50, 0.85);
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+      width: 300px;
+      margin: 100px auto;
+    }
+    input, textarea, button {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: none;
+      font-size: 1em;
+    }
+    button {
+      background: #4e5d94;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="stars" id="stars"></div>
+  <div class="container" id="loginBox">
+    <input type="text" id="username" placeholder="username" />
+    <input type="password" id="password" placeholder="password" />
+    <button onclick="login()">Login</button>
+    <p id="loginMsg" style="color: pink;"></p>
+  </div>
+
+  <div class="container" id="grievanceBox" style="display:none;">
+    <h3>enter ur grievance ^_^</h3>
+    <textarea id="grievance" rows="5"></textarea><br>
+    <button onclick="submitGrievance()">submit</button>
+    <p id="confirmation"></p>
+    <div id="response"></div>
+  </div>
+
+  <script>
+    const failMsgs = ["try again 😭", "u literally made the password", "nahhh try fr"];
+    function login() {
+      const u = document.getElementById('username').value;
+      const p = document.getElementById('password').value;
+      if (u === 'kahzia' && p === 'kahziaisgay') {
+        document.getElementById('loginBox').style.display = 'none';
+        document.getElementById('grievanceBox').style.display = 'block';
+        checkResponse();
+      } else {
+        document.getElementById('loginMsg').innerText = failMsgs[Math.floor(Math.random() * failMsgs.length)];
+      }
+    }
+
+    function submitGrievance() {
+      const msg = document.getElementById('grievance').value.trim();
+      if (!msg) return alert("say something 😒");
+      localStorage.setItem("grievance", msg);
+      localStorage.removeItem("response");
+      document.getElementById('confirmation').innerText = "aiswaeya has received it and will try to get to ur dumb ass :)";
+    }
+
+    function checkResponse() {
+      const response = localStorage.getItem("response");
+      if (response) {
+        document.getElementById('response').innerHTML = "<br><strong>👀 aiswaeya responded:</strong><br>" + response;
+      }
+    }
+
+    function createStars(count) {
+      const container = document.getElementById('stars');
+      for (let i = 0; i < count; i++) {
+        let star = document.createElement('div');
+        star.className = 'star';
+        let size = Math.random() * 2 + 1 + 'px';
+        star.style.width = size;
+        star.style.height = size;
+        star.style.top = Math.random() * 100 + '%';
+        star.style.left = Math.random() * 100 + '%';
+        container.appendChild(star);
+      }
+    }
+    createStars(150);
+  </script>
+</body>
+</html>
