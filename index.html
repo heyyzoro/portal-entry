@@ -1,12 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Grievance Portal</title>
+  <title>grievance post</title>
   <style>
     body {
-<h1 style="text-align:center; font-size:2.5em; margin-top:30px; font-weight:bold; text-shadow: 0 0 15px #ffffff80;">🌠 grievance post 🌠</h1>
       margin: 0;
       font-family: monospace;
       background: radial-gradient(circle at center, #0c1445, #000000);
@@ -37,7 +35,7 @@
       border-radius: 15px;
       text-align: center;
       width: 300px;
-      margin: 100px auto;
+      margin: 30px auto;
     }
     input, textarea, button {
       width: 90%;
@@ -52,10 +50,30 @@
       color: white;
       cursor: pointer;
     }
+    h1 {
+      text-align:center;
+      font-size:2.5em;
+      margin-top:30px;
+      font-weight:bold;
+      text-shadow: 0 0 15px #ffffff80;
+    }
   </style>
 </head>
 <body>
+
+  <!-- 🌠 Fancy title -->
+  <h1>🌠 grievance post 🌠</h1>
+
+  <!-- 🎵 Hidden background music -->
+  <audio autoplay loop style="display:none;">
+    <source src="nightmarket.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- 🌌 Starry vibe generator -->
   <div class="stars" id="stars"></div>
+
+  <!-- 🔐 Login Section -->
   <div class="container" id="loginBox">
     <input type="text" id="username" placeholder="username" />
     <input type="password" id="password" placeholder="password" />
@@ -63,6 +81,7 @@
     <p id="loginMsg" style="color: pink;"></p>
   </div>
 
+  <!-- 💬 Grievance Section -->
   <div class="container" id="grievanceBox" style="display:none;">
     <h3>enter ur grievance ^_^</h3>
     <textarea id="grievance" rows="5"></textarea><br>
@@ -71,8 +90,14 @@
     <div id="response"></div>
   </div>
 
+  <!-- 🧠 JS Logic -->
   <script>
-    const failMsgs = ["try again 😭", "u literally made the password", "nahhh try fr"];
+    const failMsgs = [
+      "try again 😭",
+      "u literally made the password",
+      "nahhh try fr"
+    ];
+
     function login() {
       const u = document.getElementById('username').value;
       const p = document.getElementById('password').value;
@@ -113,11 +138,8 @@
         container.appendChild(star);
       }
     }
+
     createStars(150);
-<audio autoplay loop>
-  <source src="nightmarket.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
   </script>
 </body>
 </html>
